@@ -1,0 +1,12 @@
+.owner,
+.contact {
+    margin: 50px;
+}
+
+.owner {
+    text-align: right;
+}
+
+.contact {
+    text-align: left;
+}

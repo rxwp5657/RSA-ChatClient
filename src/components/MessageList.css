@@ -1,0 +1,7 @@
+.column {
+    float: left;
+}
+
+.column.message-list {
+    width: 70%;
+}

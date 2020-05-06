@@ -1,0 +1,27 @@
+.row {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column {
+    float: left;
+}
+
+.column.input-text {
+    width: 70%;
+}
+
+.column.send-button {
+    width: 30%;
+}
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+}

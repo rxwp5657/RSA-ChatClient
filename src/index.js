@@ -1,12 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import {Provider} from 'react-redux'
+import { createStore } from 'redux';
+import ChatRoom from './containers/ChatRoom.js'
 import * as serviceWorker from './serviceWorker';
+import { messageHandler } from './reducers'
+import './index.css';
+
+
+const store = createStore(messageHandler)
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <ChatRoom />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,0 +1,7 @@
+.column {
+    float: left;
+}
+
+.column.contact-list {
+    width: 30%;
+}
