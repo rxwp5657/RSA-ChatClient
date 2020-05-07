@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux'
-import { createStore } from 'redux';
-import ChatRoom from './containers/ChatRoom.js'
-import * as serviceWorker from './serviceWorker';
-import { messageHandler } from './reducers'
+import {Provider} from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import ChatRoom from './containers/ChatRoom.js';
+import * as serviceWorker  from './serviceWorker';
+import { messageHandler  } from './reducers'
+import thunkMiddleware     from 'redux-thunk';
 import './index.css';
 
 
-const store = createStore(messageHandler)
+const store = createStore(messageHandler, applyMiddleware(thunkMiddleware));
 
 
 ReactDOM.render(
