@@ -1,12 +1,28 @@
 .owner,
 .contact {
-    margin: 50px;
+    min-width: 50px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    border-radius: 7px;
+    padding: 10px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .2);
+    width: auto;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    width: max-content;
+
 }
 
 .owner {
+    background-color: #51dacf;
     text-align: right;
+    position:relative; 
+    left:800px;
 }
 
 .contact {
+    background-color: #d2fafb;
     text-align: left;
+    position:relative; 
+    left:40px;
 }

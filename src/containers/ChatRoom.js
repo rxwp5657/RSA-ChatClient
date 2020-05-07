@@ -50,7 +50,7 @@ class ChatRoom extends Component {
         return(
             <div class="chat-room">
                 <ContactList contacts={contacts}/>
-                <MessageList messages={messages}/>  
+                <MessageList messages={messages}/>
                 <MessageBar buttonEvent={this.props.onSendMessage}/>
             </div>
         );
