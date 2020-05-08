@@ -8,6 +8,7 @@ import {SHOW_MESSAGE,
         LOGIN_PENDING,
         LOGIN_SUCCESS,
         LOGIN_FAILED,
+        CLEAR_MESSAGES
 } from './constants'
 
 
@@ -70,6 +71,8 @@ export const messageHandler = (state = messageInitialState, action = {}) => {
             return {...state, messages : updateMessage(state.messages, action.payload.id, "status", action.payload.error)}
         case RECEIVE_MESSAGE:
             return {...state, lastMessageID: state.lastMessageID + 1, messages : [...state.messages, makeMessage(action.payload)]}
+        case CLEAR_MESSAGES:
+            return {...state, messages : []}
         default :
             return state;
     }

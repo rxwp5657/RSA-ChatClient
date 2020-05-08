@@ -8,12 +8,12 @@ import {SHOW_MESSAGE,
         CHANGE_CHATROOM,
         ADD_CONTACT,
         REQUEST_CONTACTS_FAILED,
-        REQUEST_CONTACTS_SUCEESS,
         REQUEST_CONTACTS_PENDING,
         senders,
         LOGIN_PENDING,
         LOGIN_SUCCESS,
-        LOGIN_FAILED
+        LOGIN_FAILED,
+        CLEAR_MESSAGES
     } from './constants'
 
 
@@ -47,6 +47,11 @@ export const receiveMessage = (messageContent, encriptedMessage) => ({
 export const changeChatRoom = (recipient) => ({
     type    : CHANGE_CHATROOM,
     payload : recipient
+});
+
+export const clearMessages = () => ({
+    type    : CLEAR_MESSAGES,
+    payload : []
 });
  
 export const addContact = (contactName) => ({

@@ -8,16 +8,17 @@ import {showMessage,
         sendMessage, 
         receiveMessage,
         changeChatRoom,
+        clearMessages,
         addContact,
         receiveConnectedContacts} from '../actions';
 import './ChatRoom.css'
 
 const RSA = (message) => {
-    return "883ahdp38723nl0"
+    return message
 }
 
 const decript = (message) => {
-    return "plain text";
+    return message;
 }
 
 const mapStateToProps = (state) => ({
@@ -37,6 +38,7 @@ const mapDispatchToProps = (dispatch) => ({
 
     onChangeChatRoom : (recipient) => {
         dispatch(changeChatRoom(recipient));
+        dispatch(clearMessages());
     }
 })
 
