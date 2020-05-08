@@ -1,20 +1,61 @@
-.row {
-    content: "";
-    display: table;
-    clear: both;
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+
+.write {
+    font-family: 'Lato', sans-serif;
+    display: inline-flex;
 }
 
-.column {
-    float: left;
+.esc-mens {
+    resize: none;
+    width: 820px;
+    height: 80px;
+    font-size: 14px;
+    overflow-y: scroll;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 1%;
+    vertical-align:middle;
+    margin-left:430px;
+    box-shadow: inset 0px 0px 3px #999;
 }
 
-.column.input-text {
-    width: 70%;
+.btn-enviar {
+    font-size: 16px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align:middle;
+    margin-left: 30px;
+    margin-top:15px;
+    background-color: #61d4b3;
+    border: 2px solid gray;
+    box-shadow: 2px 1px 2px 999;
+    position:relative;
 }
 
-.column.send-button {
-    width: 30%;
+.btn-enviar:hover {
+    background-color: #b7efcd;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
 }
+
+.btn-enviar:active {
+    background-color: #dcedc1;
+    box-shadow: 0 0 0 black;
+    transform: translateY(4px);
+    cursor: pointer;
+}
+
+img {
+    width: 60%;
+    height: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 .footer {
     position: absolute;
@@ -23,5 +64,6 @@
     left: 0;
     padding: 1rem;
     background-color: #efefef;
-    text-align: center;
+    display:flex;
+
 }
