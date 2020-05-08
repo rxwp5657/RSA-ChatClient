@@ -1,21 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React      from 'react';
+import ReactDOM   from 'react-dom';
 import {Provider} from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import ChatRoom from './containers/ChatRoom.js';
-import * as serviceWorker  from './serviceWorker';
-import { messageHandler  } from './reducers'
+import Home       from './containers/Home'
 import thunkMiddleware     from 'redux-thunk';
+import * as serviceWorker  from './serviceWorker';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { messageHandler, chatRoomHandler, contactHandler, signInHandler } from './reducers'
 import './index.css';
 
-
-const store = createStore(messageHandler, applyMiddleware(thunkMiddleware));
+const rootReducer = combineReducers({messageHandler, chatRoomHandler, contactHandler, signInHandler}) 
+const store       = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ChatRoom />
+      <Home />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

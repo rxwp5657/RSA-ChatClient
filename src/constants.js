@@ -6,4 +6,16 @@ export const SEND_MESSAGE_SUCCESS = "SEND_MESSAGE_TO_SUCCESS"
 
 export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE"
 
+export const CHANGE_CHATROOM = "CHANGE_CHATROOM"
+
+export const ADD_CONTACT = "ADD_CONTACT"
+
+export const REQUEST_CONTACTS_FAILED  = "REQUEST_CONTACTS_FAILED" 
+export const REQUEST_CONTACTS_PENDING = "REQUEST_CONTACTS_PENDING" 
+
+export const LOGIN_PENDING = "LOGIN_PENDING"
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
+export const LOGIN_FAILED  = "LOGIN_FAILED"
+
+
 export const senders = {OWNER   : "owner", CONTACT : "contact"}

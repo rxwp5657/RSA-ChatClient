@@ -1,7 +1,7 @@
 import React from 'react'
 import './MessageBar.css'
 
-const MessageBar = ({buttonEvent, lastSentMessage, receiver}) => {
+const MessageBar = ({buttonEvent, lastSentMessage, recipient}) => {
     return(
         <div class="footer">
             <div class="row">
@@ -9,8 +9,8 @@ const MessageBar = ({buttonEvent, lastSentMessage, receiver}) => {
                     <textarea id="messageBox" placeholder="Enter message..."> </textarea>
                 </div>
                 <div class="column send-button">
-                    <button onClick={(event) => {
-                            buttonEvent(document.getElementById("messageBox").value, lastSentMessage, receiver);
+                    <button onClick={ (event) => {
+                            buttonEvent(document.getElementById("messageBox").value, lastSentMessage, recipient);
                         }
                     }> Send</button>
                 </div>
