@@ -5,9 +5,8 @@ import './MessageList.css';
 const MessageList = ({messages}) => {
     return(
 
-        <div class="column message-list">
+        <div class="message-list">
             <div id="contact-bar"></div>
-            <div id="scrollable">
                 <div id="block"></div>
                 <div id="msgs">
                 {
@@ -22,7 +21,6 @@ const MessageList = ({messages}) => {
                     })
                 }
                 </div>
-            </div>
         </div>
     );
 }

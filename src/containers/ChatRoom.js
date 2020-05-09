@@ -67,9 +67,15 @@ const ChatRoom = (props) => {
     
     return(
         <div class="chat-room">
-            <ContactList contacts={props.contacts} changeRecipient={props.onChangeChatRoom}/>
-            <MessageList messages={props.messages}/>  
-            <MessageBar buttonEvent={props.onSendMessage} lastSentMessage={props.lastMessageID} recipient={props.recipient}/>
+            <div class="contact-section">
+                <ContactList contacts={props.contacts} changeRecipient={props.onChangeChatRoom}/> 
+            </div>
+            <div class="messages-section">
+                <MessageList messages={props.messages}/>  
+            </div>
+            <div class="bar-section">
+                <MessageBar buttonEvent={props.onSendMessage} lastSentMessage={props.lastMessageID} recipient={props.recipient}/>
+            </div>
         </div>
     );
 }
