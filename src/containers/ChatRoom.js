@@ -13,12 +13,22 @@ import {showMessage,
         receiveConnectedContacts} from '../actions';
 import './ChatRoom.css'
 
-const RSA = (message) => {
-    return message
+const encrypt = (message, pubKey) => {
+    let e = (0n).constructor(pubKey[0])
+    let m = (0n).constructor(pubKey[1])
+    return message.split('').map((char) => {
+        return ((0n).constructor(char.charCodeAt(0)) ** e) % m
+    })
+    .join("/");
 }
 
-const decript = (message) => {
-    return message;
+const decrypt = (message, privKey) => {
+    let e = (0n).constructor(privKey[0])
+    let m = (0n).constructor(privKey[1])
+    return message.split('/').map((num) => {
+        return String.fromCharCode(Number(((0n).constructor(num) ** e) % m))
+    })
+    .join('');
 }
 
 const mapStateToProps = (state) => ({
@@ -31,9 +41,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 
     onSendMessage: (message, messageID, receiver) => {
-        let encriptedMessage = RSA(message)
+        let encriptedMessage = encrypt(message, receiver.pubKey)
         dispatch(showMessage(message, encriptedMessage, "pending"))
-        sendMessage(encriptedMessage, receiver, messageID)(dispatch);
+        sendMessage(encriptedMessage, receiver.name, messageID)(dispatch);
     },
 
     onChangeChatRoom : (recipient) => {
@@ -50,12 +60,12 @@ const ChatRoom = (props) => {
         const socket = socketIOClient("http://localhost:4000");
 
         socket.on("register", () => {
-            socket.emit("registering", {userName: props.userName, pubKey: "0hbnadw"})
+            socket.emit("registering", {userName: props.userName, pubKey: props.keys.public})
             receiveConnectedContacts()(dispatch);
         });
 
         socket.on("receive", (data) => {
-            let plainMessage = decript(data.message);
+            let plainMessage = decrypt(data.message, props.keys.private);
             dispatch(receiveMessage(plainMessage, data.message));
         });
 

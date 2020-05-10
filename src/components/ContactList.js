@@ -11,6 +11,7 @@ const ContactList = ({contacts, changeRecipient}) => {
                         <Contact
                            name={contactObj.name}
                            image={contactObj.picture}
+                           pubKey={contactObj.pubKey}
                            changeRecipient={changeRecipient}
                         />
                     );

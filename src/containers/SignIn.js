@@ -4,7 +4,7 @@ import {submitForm} from '../actions';
 import './SignIn.css'
 
 const mapStateToProps = (state) => ({
-    error : state.signInHandler.error
+    status : state.signInHandler.status
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -26,7 +26,7 @@ const SignIn = (props) => {
                     <button type="button" onClick={() => {
                         props.onSubmit(document.getElementById("userNameInput").value);
                     }}/>
-                    <p>{ props.error }</p>
+                    <p>{ props.status }</p>
                 </form>
             </div>
         </div>

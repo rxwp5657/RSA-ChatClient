@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {generatePrimes} from './utils/utils';
 
 import {SHOW_MESSAGE, 
         SEND_MESSAGE_PENDING,
@@ -13,7 +14,10 @@ import {SHOW_MESSAGE,
         LOGIN_PENDING,
         LOGIN_SUCCESS,
         LOGIN_FAILED,
-        CLEAR_MESSAGES
+        CLEAR_MESSAGES,
+        KEY_GENERATION_FAILED,
+        KEY_GENERATION_PENDING,
+        KEY_GENERATION_SUCCESS
     } from './constants'
 
 
@@ -54,9 +58,9 @@ export const clearMessages = () => ({
     payload : []
 });
  
-export const addContact = (contactName) => ({
+export const addContact = ({name, pubKey}) => ({
     type    : ADD_CONTACT,
-    payload : {name  : contactName, image : ""}
+    payload : {name  : name, image : "", pubKey: pubKey}
 });
 
 export const receiveConnectedContacts = () => {
@@ -68,10 +72,10 @@ export const receiveConnectedContacts = () => {
         axios.get("http://localhost:4000/connectedContacts")
         .then(res => {
             
-            const contactNames= res.data;
+            const contactsData = res.data;
 
-            contactNames.forEach(contactName => {
-                dispatch(addContact(contactName));
+            contactsData.forEach(contactData => {
+                dispatch(addContact(contactData));
             });
             
         })
@@ -81,8 +85,24 @@ export const receiveConnectedContacts = () => {
     }   
 }
 
-export const submitForm = (userName) => {
+export const generateKeys = (size) => {
 
+    return dispatch => {   
+
+        dispatch({type: KEY_GENERATION_PENDING});
+        
+        generatePrimes(size)
+        .then(payload => {
+            dispatch({type: KEY_GENERATION_SUCCESS, payload: payload})
+        })
+        .catch(err => {
+            dispatch({type: KEY_GENERATION_FAILED, payload: err});
+        })
+    }
+}
+
+export const submitForm = (userName) => {
+    
     return dispatch => {
         dispatch({type: LOGIN_PENDING});
 
@@ -91,9 +111,9 @@ export const submitForm = (userName) => {
         })
         .then(res => {
             dispatch({type: LOGIN_SUCCESS, payload: userName})
+            generateKeys(8n)(dispatch);
         })
         .catch(err => {
-            console.log(err)
             dispatch({type: LOGIN_FAILED,  payload: err.body})
         })
     }

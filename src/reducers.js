@@ -1,3 +1,9 @@
+import {makeMessage, 
+        makeContact,
+        updateMessage,
+        generateKeysRSA
+} from './utils/utils'
+
 import {SHOW_MESSAGE, 
         SEND_MESSAGE_PENDING,
         SEND_MESSAGE_FAILED,
@@ -8,9 +14,11 @@ import {SHOW_MESSAGE,
         LOGIN_PENDING,
         LOGIN_SUCCESS,
         LOGIN_FAILED,
-        CLEAR_MESSAGES
+        CLEAR_MESSAGES,
+        KEY_GENERATION_SUCCESS,
+        KEY_GENERATION_PENDING,
+        KEY_GENERATION_FAILED
 } from './constants'
-
 
 const messageInitialState = {
     messages : [], 
@@ -28,35 +36,9 @@ const contactsInitialState = {
 
 const signInInitialState = {
     signedIn : false,
-    error    : "",
-    userName : ""
-}
-
-const makeContact = ({name, image}) => ({
-    name  : name,
-    image : image
-});
-
-const makeMessage = ({content, encripted, status, sender,}) => ({
-    message          : content, 
-    encriptedMessage : encripted, 
-    sender           : sender,
-    status           : status 
-});
-
-const changeMessageParam = (paramName, value, message) => {
-    let change = {}
-    change[paramName] = value 
-    return Object.assign({}, message, change)
-}
-
-const updateMessage = (messages, id, paramName, value) => {
-    return messages.map((message, i) => {
-        if(i !== id){
-            return message
-        }
-        return changeMessageParam(paramName, value, message);
-    })
+    userName : "",
+    status   : "",
+    keys     : {}
 }
 
 export const messageHandler = (state = messageInitialState, action = {}) => {
@@ -101,9 +83,15 @@ export const signInHandler = (state = signInInitialState, action = {}) => {
         case LOGIN_PENDING:
             return state;
         case LOGIN_SUCCESS:
-            return {...state, signedIn: true, userName: action.payload}
+            return {...state, userName: action.payload}
         case LOGIN_FAILED:
-            return {...state, error: "User name already exists"}
+            return {...state, status: "User name already exists"}
+        case KEY_GENERATION_PENDING:
+            return {...state, status: "Generating keys, please wait"}
+        case KEY_GENERATION_SUCCESS:
+            return {...state, signedIn: true, keys: generateKeysRSA(action.payload)}
+        case KEY_GENERATION_FAILED:
+            return {...state, status: `Unable to generate keys because ${action.payload}`}
         default:
             return state;
     }

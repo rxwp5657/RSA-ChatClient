@@ -5,7 +5,8 @@ import ChatRoom  from './ChatRoom'
 
 const mapStateToProps = (state) => ({
     userName : state.signInHandler.userName,
-    signedIn : state.signInHandler.signedIn
+    signedIn : state.signInHandler.signedIn,
+    keys     : state.signInHandler.keys
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -13,10 +14,10 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-const Home = ({signedIn, userName}) => {
+const Home = ({signedIn, userName, keys}) => {
     return(
         <div>
-            {signedIn ? <ChatRoom userName={userName} /> : <SignIn />}
+            {signedIn ? <ChatRoom userName={userName} keys={keys}/> : <SignIn />}
         </div>
     );
 }
