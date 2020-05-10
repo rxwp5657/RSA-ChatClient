@@ -72,8 +72,6 @@ const ChatRoom = (props) => {
             </div>
             <div class="messages-section">
                 <MessageList messages={props.messages}/>  
-            </div>
-            <div class="bar-section">
                 <MessageBar buttonEvent={props.onSendMessage} lastSentMessage={props.lastMessageID} recipient={props.recipient}/>
             </div>
         </div>

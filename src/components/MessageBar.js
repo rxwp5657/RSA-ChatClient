@@ -4,7 +4,6 @@ import send_picture from './enviar.png'
 
 const MessageBar = ({buttonEvent, lastSentMessage, recipient}) => {
     return(
-        <div class="footer">
             <div class="write">
                 <textarea id="messageBox" placeholder="Enter a message..." class="esc-mens"></textarea>
                 <button class="btn-enviar" onClick={(event) => {
@@ -13,7 +12,6 @@ const MessageBar = ({buttonEvent, lastSentMessage, recipient}) => {
                     <img src={send_picture}></img>
                 </button>
             </div>
-        </div>
     );
 }
 

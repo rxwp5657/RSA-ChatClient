@@ -2,10 +2,10 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 
 .contact-list {
-    width: 30%;
-    height: 656px;
-    /*font-family:"Helvetica Neue";*/
+    height: 100%;
     font-family: 'Lato', sans-serif;
     font-weight: bold;
-    border: 0.1px solid #999;
+    overflow: auto;
+    display:flex;
+    flex-direction: column;
 }

@@ -4,11 +4,11 @@ import './MessageList.css';
 
 const MessageList = ({messages}) => {
     return(
-
         <div class="message-list">
-            <div id="contact-bar"></div>
-                <div id="block"></div>
-                <div id="msgs">
+            <div id="contact-bar">
+                <span>Nombre del contacto</span>
+            </div>
+            <div id="msgs">
                 {
                     messages.map((messageObj) => {
                         return(
@@ -20,7 +20,7 @@ const MessageList = ({messages}) => {
                         );
                     })
                 }
-                </div>
+            </div>
         </div>
     );
 }
