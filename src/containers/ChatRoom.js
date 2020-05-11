@@ -3,6 +3,7 @@ import MessageList                from "../components/MessageList";
 import MessageBar                 from "../components/MessageBar";
 import ContactList                from "../components/ContactList";
 import socketIOClient             from "socket.io-client";
+import {modularPow}               from "../utils/utils"
 import {connect, useDispatch}     from 'react-redux';
 import {showMessage, 
         sendMessage, 
@@ -13,22 +14,19 @@ import {showMessage,
         receiveConnectedContacts} from '../actions';
 import './ChatRoom.css'
 
+
 const encrypt = (message, pubKey) => {
     let e = (0n).constructor(pubKey[0])
     let m = (0n).constructor(pubKey[1])
-    return message.split('').map((char) => {
-        return ((0n).constructor(char.charCodeAt(0)) ** e) % m
-    })
+    return message.split('').map((char) => modularPow((0n).constructor(char.charCodeAt(0)), e, m))
     .join("/");
 }
 
 const decrypt = (message, privKey) => {
     let e = (0n).constructor(privKey[0])
     let m = (0n).constructor(privKey[1])
-    return message.split('/').map((num) => {
-        return String.fromCharCode(Number(((0n).constructor(num) ** e) % m))
-    })
-    .join('');
+    return message.split('/').map((num) => String.fromCharCode(Number(modularPow((0n).constructor(num), e, m))))
+    .join("");
 }
 
 const mapStateToProps = (state) => ({

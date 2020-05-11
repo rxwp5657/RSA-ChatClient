@@ -111,7 +111,7 @@ export const submitForm = (userName) => {
         })
         .then(res => {
             dispatch({type: LOGIN_SUCCESS, payload: userName})
-            generateKeys(8n)(dispatch);
+            generateKeys(128n)(dispatch);
         })
         .catch(err => {
             dispatch({type: LOGIN_FAILED,  payload: err.body})
