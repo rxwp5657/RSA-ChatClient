@@ -1,5 +1,30 @@
-.chat-room:after {
-    content: "";
-    display: table;
-    clear: both;
+body{
+    margin: 0;
 }
+
+.chat-room {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 100vw;
+    height: 100vh;
+}
+
+.contact-section {
+    grid-column: 1 / 2; /*inicia y termina*/
+    grid-row: 1 / 6; /*inicia y termina*/
+    /*background-color: aqua;*/
+}
+
+.messages-section {
+    grid-column: 2 / 4; /*inicia y termina*/
+    grid-row: 1 / 6; /*inicia y termina*/
+    /*background-color: yellow;*/
+    display:flex;
+    flex-direction: column;
+}
+
+/*.bar-section 
+    grid-column: 2 / 4;
+    grid-row: 3/ 6; 
+}*/
