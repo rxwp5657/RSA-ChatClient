@@ -13,20 +13,25 @@ const mapDispatchToProps = (dispatch) => ({
 
 const SignIn = (props) => {
     return(
-        <div>
-            <div>
-                <div>
+        <div class="allscreen">
+            <div class="login-elements">
+                <div class="title">
                     <h1> Login </h1>
                 </div>
                 <form onSubmit={props.onSubmit}>
-                    <div>
-                        <label for="name"> Chat Name: </label>
-                        <input type="text" name="name" id="userNameInput"/>
+                    <div class="inputLogin">
+                        <input type="text" placeholder="Enter chat name" name="name" id="userNameInput"/>
                     </div>
-                    <button type="button" onClick={() => {
+                    <div class="buttonLogin">
+                        <button type="button" onClick={() => {
                         props.onSubmit(document.getElementById("userNameInput").value);
-                    }}/>
-                    <p>{ props.status }</p>
+                        }}>
+                            Sign In 
+                        </button>
+                    </div>
+                    <div class="propLogin">
+                        <p>{ props.error }</p>
+                    </div>
                 </form>
             </div>
         </div>
