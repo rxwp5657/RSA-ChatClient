@@ -68,7 +68,7 @@ const ChatRoom = (props) => {
         });
 
         socket.on("newContact", (data) => {
-            dispatch(addContact(data.userName))
+            dispatch(addContact(data))
         });
 
     }, []);
@@ -79,7 +79,7 @@ const ChatRoom = (props) => {
                 <ContactList contacts={props.contacts} changeRecipient={props.onChangeChatRoom}/> 
             </div>
             <div class="messages-section">
-                <MessageList messages={props.messages}/>  
+                <MessageList messages={props.messages} recipient={props.recipient.name}/>  
                 <MessageBar buttonEvent={props.onSendMessage} lastSentMessage={props.lastMessageID} recipient={props.recipient}/>
             </div>
         </div>

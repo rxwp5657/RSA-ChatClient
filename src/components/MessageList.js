@@ -2,11 +2,11 @@ import React from 'react';
 import Message from './Message';
 import './MessageList.css';
 
-const MessageList = ({messages}) => {
+const MessageList = ({messages, recipient}) => {
     return(
         <div class="message-list">
             <div id="contact-bar">
-                <span>Nombre del contacto</span>
+                <span>{recipient}</span>
             </div>
             <div id="msgs">
                 {

@@ -1,6 +1,5 @@
 .owner,
 .contact {
-    min-width: 50px;
     margin-top: 2%;
     margin-bottom: 2%;
     border-radius: 7px;
@@ -8,8 +7,8 @@
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, .2);
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
-    width: max-content;
-
+    width: 15%;
+    word-break: break-all;
 }
 
 /*em*/
@@ -17,7 +16,7 @@
 .owner {
     background-color: #51dacf;
     text-align: right;
-    margin-left: 85%;
+    margin-left: 75%;
 }
 
 .contact {
